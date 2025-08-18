@@ -1,0 +1,42 @@
+@import "tailwindcss";
+@import "@fontsource/ibm-plex-sans/400.css"; /* Regular */
+@import "@fontsource/ibm-plex-sans/500.css"; /* Medium */
+@import "@fontsource/ibm-plex-sans/700.css"; /* Bold */
+
+:root {
+  --background: #ffffff;
+  --foreground: #171717;
+
+  /* Add IBM Plex Sans as default sans font */
+  --font-sans: "IBM Plex Sans", Arial, Helvetica, sans-serif;
+}
+
+@theme inline {
+  --color-background: var(--background);
+  --color-foreground: var(--foreground);
+  --font-sans: var(--font-sans);
+  --font-mono: var(--font-geist-mono);
+}
+
+@media (prefers-color-scheme: dark) {
+  :root {
+    --background: #0a0a0a;
+    --foreground: #ededed;
+  }
+}
+
+body {
+  background: var(--background);
+  color: var(--foreground);
+  font-family: var(--font-sans);
+}
+/* In globals.css or tailwind.css */
+.scrollbar-hide::-webkit-scrollbar {
+  display: none;
+}
+.scrollbar-hide {
+  -ms-overflow-style: none;
+  scrollbar-width: none;
+}
+
+
