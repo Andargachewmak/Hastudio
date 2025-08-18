@@ -106,7 +106,7 @@ export default function Home() {
       {/* Hero */}
 <section className="px-[151px] py-20 text-center max-w-full mx-auto">
   {/* Heading with image behind "Results" */}
-<h1 className="text-7xl md:text-[133px] font-medium leading-[0.96] tracking-[-16px]">
+<h1 className="text-7xl md:text-[134.5px] font-medium leading-[0.96] tracking-[-16px]">
   Design Built for{" "}
   <span className="relative inline-block text-[#F15B5F] underline-offset-4 decoration-2 tracking-[-11px]  italic">
     Results
@@ -134,7 +134,7 @@ export default function Home() {
       href="#projects"
       className="inline-flex items-center text-[#F15B5F] font-medium "
     >
-      <div className="flex flex-col text-sm leading-tight mt-8">
+      <div className="flex flex-col text-sm leading-tight mt-8 ml-16">
         <span className="text-[#000000]">EXPLORE OUR</span>
         <span>PROJECTS</span>
       </div>

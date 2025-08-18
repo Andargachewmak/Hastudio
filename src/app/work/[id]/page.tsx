@@ -48,7 +48,7 @@ const SectionWithImages = ({
         {images.map((img, index) => (
           <div
             key={index}
-            className={`relative  ${img.className || ""}`}
+            className={`relative   ${img.className || ""}`}
             style={{ minHeight: "200px", ...img.style }}
           >
             <Image
