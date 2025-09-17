@@ -10,6 +10,7 @@ export default function Work() {
   const router = useRouter();
   const [selectedFilter, setSelectedFilter] = useState<string>("Show All");
   const [fileName, setFileName] = useState("");
+  const [loadingProjectId, setLoadingProjectId] = useState<number | null>(null);
 
   const filteredProjects =
     selectedFilter === "Show All"
@@ -23,34 +24,44 @@ export default function Work() {
     }
   };
 
+  const handleProjectClick = (id: number) => {
+    setLoadingProjectId(id); // Show overlay
+    setTimeout(() => {
+      router.push(`/work/${id}`);
+    }, 500); // Optional delay for demo
+  };
+
   return (
     <main className="bg-gray-100 text-black font-sans">
       {/* === HEADER === */}
-<header className="flex items-center justify-between px-24 lg:px-40 py-6 ">
-  {/* Logo */}
-  <div className="ml-4 lg:ml-14"> {/* even larger right margin */}
-    <Image
-      src="/Image/Artboard 1 copy 4.svg"
-      alt="Ha studio Logo"
-      width={150}
-      height={40}
-    />
-  </div>
+      <header className="flex items-center justify-between px-24 lg:px-40 py-6 ">
+        <div className="ml-4 lg:ml-14">
+          <Image
+            src="/Image/Artboard 1 copy 4.svg"
+            alt="Ha studio Logo"
+            width={150}
+            height={40}
+          />
+        </div>
 
-  {/* Centered navigation links */}
-  <nav className="flex-1 flex justify-center gap-12 text-sm font-medium">
-    <a href="#services" className="hover:text-[#F15B5F] transition">Services</a>
-<Link href="/work" className="hover:text-[#F15B5F] transition font-bold">
+        <nav className="flex-1 flex justify-center gap-12 text-sm font-medium">
+          <a href="#services" className="hover:text-[#F15B5F] transition">
+            Services
+          </a>
+          <Link href="/work" className="hover:text-[#F15B5F] transition font-bold">
             Work
           </Link>
-    <a href="#about" className="hover:text-[#F15B5F] transition">About</a>
-  </nav>
+          <a href="#about" className="hover:text-[#F15B5F] transition">
+            About
+          </a>
+        </nav>
 
-  {/* Contact link */}
-  <div className="hidden md:flex text-sm font-medium mr-2 lg:mr-2"> {/* even larger left margin */}
-    <a href="#contact" className="hover:text-[#F15B5F] transition">Contact</a>
-  </div>
-</header>
+        <div className="hidden md:flex text-sm font-medium mr-2 lg:mr-2">
+          <a href="#contact" className="hover:text-[#F15B5F] transition">
+            Contact
+          </a>
+        </div>
+      </header>
 
       {/* === OUR WORKS SECTION === */}
       <section className="px-6 lg:px-8 py-20 max-w-6xl mx-auto space-y-6 -mt-5">
@@ -88,44 +99,54 @@ export default function Work() {
         </div>
 
         {/* Projects Grid */}
-        <div className="grid grid-cols-1 md:grid-cols-2 gap-20 mt-4">
-          {filteredProjects.map((project) => (
-            <div
-              key={project.id}
-              className="flex flex-col items-start cursor-pointer"
-              onClick={() => router.push(`/work/${project.id}`)}
-            >
-              {/* Image Box */}
-              <div className="w-138 h-124 bg-white overflow-hidden relative rounded-lg">
-                {project.image ? (
-                  <Image
-                    src={project.image}
-                    alt={project.title}
-                    fill
-                    className="object-cover w-full"
-                  />
-                ) : (
-                  <div className="flex items-center justify-center h-full text-gray-500">
-                    No Image
-                  </div>
-                )}
-              </div>
+{/* Projects Grid */}
+<div className="grid grid-cols-1 md:grid-cols-2 gap-20 mt-4">
+  {filteredProjects.map((project) => (
+    <div
+      key={project.id}
+      className="flex flex-col items-start cursor-pointer transform transition-transform duration-300 hover:scale-105 hover:shadow-2xl"
+      onClick={() => handleProjectClick(project.id)}
+    >
+      {/* Image Box */}
+      <div className="w-138 h-124 bg-white overflow-hidden relative rounded-lg">
+        {project.image ? (
+          <Image
+            src={project.image}
+            alt={project.title}
+            fill
+            className="object-cover w-full"
+          />
+        ) : (
+          <div className="flex items-center justify-center h-full text-gray-500">
+            No Image
+          </div>
+        )}
 
-              {/* Title, Description, and Category */}
-              <div className="mt-4 w-124 flex justify-between items-start">
-                <div className="text-left">
-                  <h3 className="font-bold text-xl mb-2">{project.title}</h3>
-                  <p className="text-gray-700">{project.description}</p>
-                </div>
-                <span className="text-sm font-medium text-[#000000] uppercase">
-                  {project.category}
-                </span>
-              </div>
-            </div>
-          ))}
+        {/* Overlay */}
+        {loadingProjectId === project.id && (
+          <div className="absolute inset-0 bg-black/40 backdrop-blur-sm flex flex-col items-center justify-center rounded-lg z-20">
+            <div className="w-12 h-12 border-4 border-white border-t-transparent rounded-full animate-spin mb-4"></div>
+            <span className="text-white font-semibold text-sm">
+              Opening Project...
+            </span>
+          </div>
+        )}
+      </div>
+
+      {/* Title, Description, and Category */}
+      <div className="mt-4 w-124 flex justify-between items-start">
+        <div className="text-left">
+          <h3 className="font-bold text-xl mb-2">{project.title}</h3>
+          <p className="text-gray-700">{project.description}</p>
         </div>
+        <span className="text-sm font-medium text-[#000000] uppercase">
+          {project.category}
+        </span>
+      </div>
+    </div>
+  ))}
+</div>
       </section>
-
       {/* === TESTIMONIALS SECTION === */}
      <section className="py-20 w-screen overflow-hidden">
   <div className="flex gap-6 overflow-x-auto scrollbar-hide px-4 sm:px-6 md:px-8 lg:px-12">

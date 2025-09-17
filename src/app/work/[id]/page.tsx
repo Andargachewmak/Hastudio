@@ -169,7 +169,7 @@ const SectionWithImages = ({
   }
   images={project.problemImages?.map(img => ({ src: img.src, alt: img.alt, className: img.className }))}
 />
-<div className="max-w-[1120px] mx-auto border-1 border-black mt-12 mb-12"></div>
+<div className="max-w-[1120px] mx-auto border-1 border-black mt-12 mb-12 grid md:grid-col-1"></div>
 
 {/* Solution Section */}
 <SectionWithImages

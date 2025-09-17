@@ -137,18 +137,9 @@ export const projects: Project[] = [
       { text: "The design goal was to elevate the British Pub into something more experiential but still keep the comfort factor we know and love.Our creative team developed a design system with a custom-drawn mark of the three foxes, inspired by traditional pub signage but redrawn to scale for digital platforms.", className: "text-[#000000] text-sm font-medium mt-3 leading-snug max-w-[23rem]" }
     ],
    overviewImages: [
-  {
-    src: "/Image/Artboard 6 1.png",
-    alt: "Overview Image",
-    caption: "Motion branding overview",
-    className: "w-full max-w-[1400px] aspect-[200/109] rounded-xl shadow-md mt-22" // full width + spacing from top
-  },
-  {
-    src: "/Image/Artboard 6 2.png",
-    alt: "Overview Image",
-    caption: "Motion branding overview",
-    className: "w-full aspect-[140/79] rounded-xl shadow-md -mt-2" // full width + spacing from top
-  }
+        { src: "/Image/Artboard 6 1.png", alt: "Solution Image", caption: "Motion content", className: "w-full aspect-[28/19] rounded-lg shadow-md" },
+       { src: "/Image/Artboard 6 2.png", alt: "Solution Image", caption: "Motion content", className: "w-full aspect-[28/19] rounded-lg shadow-md" },
+
 ],
     problem: [
       { text: "Supporting the best of British farmers and producers by creating menus with seasonal and sustainable ingredients.", className: "text-[#000000] text-base font-bold uppercase leading-snug max-w-[20rem]" },

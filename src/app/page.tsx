@@ -122,7 +122,7 @@ export default function Home() {
   <br /> Not Just Looks.
 </h1>
   {/* Paragraph */}
-  <p className="mt-9 text-sm md:text-sm text-[#000000] font-semibold leading-relaxed uppercase">
+  <p className="mt-9 text-sm md:text-sm text-[#000000] font-medium leading-relaxed uppercase">
     We partner with brands to solve real problems and bring clear,<br />
     standout identities to life. From the first idea to launch day,<br />
     we design with purpose and impact.
